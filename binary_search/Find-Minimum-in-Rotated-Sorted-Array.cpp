@@ -1,14 +1,16 @@
 class Solution {
 public:
     int findMin(vector<int>& v) {
-        int n=v.size();
-        int l=0,r=n-1,ans=INT_MAX;
-        while(l<=r){
-            int mid=(l+r)/2;
-            ans=min(ans,v[mid]);
-            if(v[r]-v[mid]<v[mid]-v[l] and v[r]<v[mid]) l=mid+1;
-            else r=mid-1;
+        int l = 0, r = v.size() - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (v[mid] < v[r])
+                r = mid;
+            else if (v[mid] > v[r])
+                l = mid + 1;
+            else
+                r--;
         }
-        return ans;
+        return v[l];
     }
 };
