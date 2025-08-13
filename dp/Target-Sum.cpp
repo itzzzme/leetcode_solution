@@ -3,7 +3,7 @@ public:
     int findTargetSumWays(vector<int>& nums, int target) {
         int n = nums.size();
         int sum = accumulate(nums.begin(), nums.end(), 0);
-        int tar = (sum - target);
+        int tar = (sum + target);
         if (tar < 0 || tar % 2 != 0)
             return 0;
         tar /= 2;
