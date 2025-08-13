@@ -7,6 +7,8 @@ public:
         if (tar < 0 || tar % 2 != 0)
             return 0;
         tar /= 2;
+
+        // after this it's basic solution of count_of_subset_sum
         vector<vector<int>> dp(n + 1, vector<int>(tar + 1, 0));
         for (int i = 0; i <= n; i++)
             dp[i][0] = 1;
