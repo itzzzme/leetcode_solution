@@ -38,14 +38,10 @@ public:
         vector<int> dp(n + 1, 1);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < i; j++) {
-                if (i == 0)
-                    dp[i] = 1;
-                else {
-                    if (chck(v[j], v[i]) and
-                        abs((int)v[j].size() - (int)v[i].size()) == 1) {
-                        dp[i] = max(dp[i], dp[j] + 1);
-                        mx = max(dp[i], mx);
-                    }
+                if (chck(v[j], v[i]) and
+                    abs((int)v[j].size() - (int)v[i].size()) == 1) {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                    mx = max(dp[i], mx);
                 }
             }
         }
