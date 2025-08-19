@@ -4,7 +4,7 @@ public:
     // vector<vector<int>> dp;
     bool chck(string& s1, string& s2) {
         int m = s1.length(), n = s2.length();
-        if (m > n)
+        if (m > n or n - m != 1)
             return false;
         int i = 0, j = 0;
         while (i < m and j < n) {
@@ -38,8 +38,7 @@ public:
         vector<int> dp(n + 1, 1);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < i; j++) {
-                if (chck(v[j], v[i]) and
-                    abs((int)v[j].size() - (int)v[i].size()) == 1) {
+                if (chck(v[j], v[i])) {
                     dp[i] = max(dp[i], dp[j] + 1);
                     mx = max(dp[i], mx);
                 }
