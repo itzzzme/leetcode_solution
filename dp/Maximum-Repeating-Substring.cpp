@@ -1,15 +1,19 @@
 class Solution {
 public:
-    int solve(const string &s, const string &target, int i) {
-        if (i + target.size() > s.size()) return 0;  
-        if (s.substr(i, target.size()) != target) return 0;
-        return 1 + solve(s, target, i + target.size());
-    }
     int maxRepeating(string sequence, string word) {
-        int cnt=0;
-        for(int i=0;i<sequence.size();i++){
-            cnt = max(cnt, solve(sequence, word, i));
+        int n = sequence.size();
+        int m = word.size();
+        vector<int> dp(n, 0);
+        int ans = 0;
+        for (int i = m - 1; i < n; i++) {
+            if (sequence.substr(i - m + 1, m) == word) {
+                if (i - m >= 0)
+                    dp[i] = dp[i - m] + 1;
+                else
+                    dp[i] = 1;
+                ans = max(ans, dp[i]);
+            }
         }
-        return cnt;
+        return ans;
     }
 };
