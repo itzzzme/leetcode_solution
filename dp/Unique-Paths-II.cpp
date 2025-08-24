@@ -1,5 +1,7 @@
 class Solution {
 public:
+
+    // memoization + recursion
     vector<vector<int>> dp;
     int solve(vector<vector<int>>& v, int i, int j) {
         if (i >= (int)v.size() or j >= (int)v[0].size() or v[i][j] == 1)
